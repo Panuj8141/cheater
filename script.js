@@ -64,7 +64,7 @@ practicals.forEach((practical, index) => {
 selectElement.addEventListener('change', function() {
     const selectedIndex = this.value;
     const downloadDiv = document.getElementById('download-link');
-    downloadDiv.innerHTML = '';
+    downloadDiv.innerHTML = '';  // Clear any previous links
 
     if (selectedIndex !== '') {
         const practical = practicals[selectedIndex];
@@ -72,6 +72,7 @@ selectElement.addEventListener('change', function() {
         link.href = practical.docLink;
         link.textContent = 'Download Document';
         link.className = 'download-button';
+        link.target = '_blank';  // Opens link in a new tab
         downloadDiv.appendChild(link);
     }
 });
