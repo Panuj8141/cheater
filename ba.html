@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Analytics Practicals</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        select {
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .practical {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        .steps {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .copy-button {
+            margin-top: 10px;
+            padding: 8px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .copy-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Business Analytics Practicals</h1>
+    <label for="practicals">Choose a practical:</label>
+    <select id="practicals">
+        <option value="">Select...</option>
+        <option value="practical1">Practical 1 - Import Legacy Data</option>
+        <option value="practical2">Practical 2 - ETL Process in Power BI</option>
+        <option value="practical3">Practical 3 - ETL in SQL Server</option>
+        <option value="practical4">Practical 4 - Data Analysis in Excel</option>
+        <option value="practical5">Practical 5 - What-If Analysis</option>
+        <option value="practical6">Practical 6 - Linear Regression</option>
+    </select>
+
+    <!-- Practical 1 -->
+    <div id="practical1" class="practical">
+        <h2>Practical 1: Import Legacy Data</h2>
+        <div class="steps">
+            <ol>
+                <li>Open Power BI software.</li>
+                <li>Go to 'Get Data' option under External Data group.</li>
+                <li>Select the required file format, enter the file name, and click open.</li>
+                <li>A navigator window opens. Select the sheets you want to work on and click 'Edit'.</li>
+                <li>Power Query editor opens. Go to Get Data and select OData, then enter the URL.</li>
+                <li>Select the data sheets you want and click 'Load'.</li>
+                <li>Click on the Model View icon to view relationships.</li>
+            </ol>
+        </div>
+        <button class="copy-button" onclick="copyText('practical1')">Copy Steps</button>
+    </div>
+
+    <!-- Practical 2 -->
+    <div id="practical2" class="practical">
+        <h2>Practical 2: ETL Process in Power BI</h2>
+        <div class="steps">
+            <ol>
+                <li>Load data from OData Feed.</li>
+                <li>Open Power BI and click on 'Get Data', then select OData Feed.</li>
+                <li>Paste the URL: 'https://services.odata.org/V3/Northwind/Northwind.svc/'.</li>
+                <li>Select the Products table, click on 'Transform Data'.</li>
+                <li>Remove unnecessary columns and change data type of the UnitsInStock column to whole number.</li>
+                <li>Save and close the query editor. Power BI will load the data.</li>
+                <li>Check all fields and view the data representation in chart form.</li>
+            </ol>
+        </div>
+        <button class="copy-button" onclick="copyText('practical2')">Copy Steps</button>
+    </div>
+
+    <!-- Practical 3 -->
+    <div id="practical3" class="practical">
+        <h2>Practical 3: ETL in SQL Server</h2>
+        <div class="steps">
+            <ol>
+                <li>Open SQL Server Management Studio to restore backup file.</li>
+                <li>Right-click on Databases → Restore Database.</li>
+                <li>Select Device and click the icon to choose the backup files.</li>
+                <li>Select the AdventureWorks backup file.</li>
+                <li>Click OK to restore the database.</li>
+                <li>Open SQL Server Data Tools, and create a new Integration Services Project.</li>
+                <li>Configure OLE DB Connection Manager and create connections between sources and destinations.</li>
+                <li>Run the project and verify the data is transferred successfully.</li>
+            </ol>
+        </div>
+        <button class="copy-button" onclick="copyText('practical3')">Copy Steps</button>
+    </div>
+
+    <!-- Practical 4 -->
+    <div id="practical4" class="practical">
+        <h2>Practical 4: Data Analysis in Excel</h2>
+        <div class="steps">
+            <ol>
+                <li>Open Excel and search for 'From Data Connection Wizard'.</li>
+                <li>Select Microsoft SQL and connect to your database.</li>
+                <li>Select Sales_DW (already created in SQL), check all dimensions and import relationships.</li>
+                <li>Create a Pivot Table and a Pivot Chart to analyze the data.</li>
+                <li>Drag and drop fields to filter and analyze the data as needed.</li>
+            </ol>
+        </div>
+        <button class="copy-button" onclick="copyText('practical4')">Copy Steps</button>
+    </div>
+
+    <!-- Practical 5 -->
+    <div id="practical5" class="practical">
+        <h2>Practical 5: What-If Analysis</h2>
+        <div class="steps">
+            <ol>
+                <li>Open Excel and save your file with a relevant name.</li>
+                <li>Insert your data in a table format.</li>
+                <li>Use the formula =SUM(C3:C6) to calculate the sum of prices.</li>
+                <li>Use =C8*10 to calculate the price of 10 systems.</li>
+                <li>Go to the Data tab, select 'What-If Analysis', and choose 'Scenario Manager'.</li>
+                <li>Add new scenarios and input the values for different scenarios.</li>
+                <li>Click 'Show' to apply the scenario changes.</li>
+            </ol>
+        </div>
+        <button class="copy-button" onclick="copyText('practical5')">Copy Steps</button>
+    </div>
+
+    <!-- Practical 6 -->
+    <div id="practical6" class="practical">
+        <h2>Practical 6: Linear Regression</h2>
+        <div class="steps">
+            <ol>
+                <li>Use the `lm()` function to create a relationship model between predictor and response variables.</li>
+                <li>Syntax: `lm(formula, data)` where `formula` represents the relation and `data` is the vector to apply it.</li>
+                <li>Create a relationship model and use `print(relation)` to display it.</li>
+                <li>Get the summary using `summary(relation)`.</li>
+                <li>Predict a new value using the `predict()` function.</li>
+                <li>Visualize the regression using the `plot()` function to create a graph of the model.</li>
+            </ol>
+        </div>
+        <button class="copy-button" onclick="copyText('practical6')">Copy Steps</button>
+    </div>
+
+    <script>
+        document.getElementById('practicals').addEventListener('change', function() {
+            var practicals = document.getElementsByClassName('practical');
+            for (var i = 0; i < practicals.length; i++) {
+                practicals[i].classList.remove('active');
+            }
+            var selectedPractical = this.value;
+            if (selectedPractical) {
+                document.getElementById(selectedPractical).classList.add('active');
+            }
+        });
+
+        function copyText(practicalId) {
+            var text = document.getElementById(practicalId).innerText;
+            var textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('Steps copied to clipboard!');
+        }
+    </script>
+
+</body>
+</html>
