@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practical Downloads</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        select, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Download Practicals</h1>
+    <label for="practical">Choose a practical:</label>
+    <select id="practical">
+        <option value="" disabled selected>Select a practical</option>
+        <option value="1">Practical 1</option>
+        <option value="2">Practical 2</option>
+        <option value="3">Practical 3</option>
+        <option value="4">Practical 4</option>
+        <option value="5">Practical 5</option>
+        <option value="6">Practical 6</option>
+        <option value="7">Practical 7</option>
+        <option value="8">Practical 8</option>
+        <option value="9">Practical 9</option>
+        <option value="10">Practical 10</option>
+        <option value="11">Practical 11</option>
+        <option value="12">Practical 12</option>
+    </select>
+    <br>
+    <button onclick="downloadFile()">Download</button>
+</div>
+
+<script>
+    function downloadFile() {
+        const practicalNumber = document.getElementById('practical').value;
+        if (practicalNumber) {
+            const fileUrl = `https://panuj8141.github.io/cheater/documents/practical${practicalNumber}.docx`;
+            window.location.href = fileUrl;
+        } else {
+            alert('Please select a practical to download.');
+        }
+    }
+</script>
+
+</body>
+</html>
