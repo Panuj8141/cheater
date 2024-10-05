@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practical Downloads</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .links { display: none; }
+        button { padding: 10px 15px; margin: 20px; }
+        a { display: block; margin: 5px 0; }
+    </style>
+</head>
+<body>
+
+<h1>Download Practical Documents</h1>
+<button id="showLinksBtn">Show Practical Links</button>
+<div class="links" id="practicalLinks"></div>
+
+<script>
+    const practicals = [
+        { name: 'Practical 2', file: 'https://raw.githubusercontent.com/panuj8141/cheater/main/pracs/practical2.docx' },
+        { name: 'Practical 3', file: 'https://raw.githubusercontent.com/panuj8141/cheater/main/pracs/practical3.docx' },
+        { name: 'Practical 4', file: 'https://raw.githubusercontent.com/panuj8141/cheater/main/pracs/practical4.docx' },
+        { name: 'Practical 5', file: 'https://raw.githubusercontent.com/panuj8141/cheater/main/pracs/practical5.docx' },
+        { name: 'Practical 6', file: 'https://raw.githubusercontent.com/panuj8141/cheater/main/pracs/practical6.docx' },
+        { name: 'Practical 7', file: 'https://raw.githubusercontent.com/panuj8141/cheater/main/pracs/practical7.docx' },
+        { name: 'Practical 8', file: 'https://raw.githubusercontent.com/panuj8141/cheater/main/pracs/practical8.docx' },
+        { name: 'Practical 9', file: 'https://raw.githubusercontent.com/panuj8141/cheater/main/pracs/practical9.docx' },
+        { name: 'Practical 10', file: 'https://raw.githubusercontent.com/panuj8141/cheater/main/pracs/practical10.docx' },
+        { name: 'Practical 11', file: 'https://raw.githubusercontent.com/panuj8141/cheater/main/pracs/practical11.docx' },
+        { name: 'Practical 12', file: 'https://raw.githubusercontent.com/panuj8141/cheater/main/pracs/practical12.docx' }
+    ];
+
+    document.getElementById('showLinksBtn').onclick = function() {
+        const linksDiv = document.getElementById('practicalLinks');
+        linksDiv.innerHTML = '';
+        practicals.forEach(practical => {
+            const link = document.createElement('a');
+            link.href = practical.file;
+            link.download = practical.name + '.docx'; // Sets the download attribute
+            link.textContent = practical.name;
+            linksDiv.appendChild(link);
+        });
+        linksDiv.style.display = 'block';
+    };
+</script>
+
+</body>
+</html>
