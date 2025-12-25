@@ -2,88 +2,103 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Security Alert</title>
+
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Share Tech Mono', monospace;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Share Tech Mono', monospace;
+}
 
-    body {
-        height: 100vh;
-        background: radial-gradient(circle at top, #1a0000, #000);
-        color: #ff3b3b;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-    }
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #1a0000, #000);
+    color: #ff3b3b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow: hidden;
+}
 
-    .scanlines::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: repeating-linear-gradient(
-            to bottom,
-            rgba(255,255,255,0.03),
-            rgba(255,255,255,0.03) 1px,
-            transparent 2px,
-            transparent 4px
-        );
-        pointer-events: none;
-    }
+.scanlines::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.03),
+        rgba(255,255,255,0.03) 1px,
+        transparent 2px,
+        transparent 4px
+    );
+    pointer-events: none;
+}
 
-    .container {
-        text-align: center;
-        padding: 40px 50px;
-        border: 2px solid #ff3b3b;
-        box-shadow: 0 0 25px rgba(255, 59, 59, 0.6);
-        animation: flicker 2s infinite;
-        max-width: 600px;
-    }
+.container {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    padding: clamp(20px, 5vw, 40px);
+    border: 2px solid #ff3b3b;
+    box-shadow: 0 0 25px rgba(255, 59, 59, 0.6);
+    animation: flicker 2s infinite;
+}
 
-    h1 {
-        font-size: 2.5rem;
-        margin-bottom: 20px;
-        text-transform: uppercase;
-    }
+h1 {
+    font-size: clamp(1.6rem, 5vw, 2.5rem);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
 
+.warning {
+    font-size: clamp(0.95rem, 3.5vw, 1.1rem);
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.countdown {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+    letter-spacing: 4px;
+}
+
+.prank {
+    display: none;
+    color: #00ff99;
+    font-size: clamp(1.2rem, 4vw, 1.6rem);
+    margin-top: 20px;
+}
+
+@keyframes flicker {
+    0% { opacity: 1; }
+    45% { opacity: 0.95; }
+    50% { opacity: 0.8; }
+    55% { opacity: 0.95; }
+    100% { opacity: 1; }
+}
+
+/* Extra tweaks for very small phones */
+@media (max-width: 360px) {
     .warning {
-        font-size: 1.1rem;
-        margin-bottom: 25px;
-        line-height: 1.6;
+        line-height: 1.4;
     }
-
     .countdown {
-        font-size: 2rem;
-        margin-top: 10px;
-        letter-spacing: 4px;
+        letter-spacing: 2px;
     }
-
-    .prank {
-        display: none;
-        color: #00ff99;
-        font-size: 1.6rem;
-        margin-top: 20px;
-    }
-
-    @keyframes flicker {
-        0% { opacity: 1; }
-        45% { opacity: 0.95; }
-        50% { opacity: 0.8; }
-        55% { opacity: 0.95; }
-        100% { opacity: 1; }
-    }
+}
 </style>
 </head>
+
 <body class="scanlines">
 
 <div class="container">
     <h1>⚠ SECURITY BREACH ⚠</h1>
+
     <p class="warning">
         Your account activity has been compromised.<br>
         Unauthorized access detected.<br>
@@ -94,26 +109,26 @@
 
     <div class="prank" id="prank">
         😂 GOT YOU 😂<br>
-        It’s just a prank.<br>
-        No hacking. No data. No stress.
+        Just a prank.<br>
+        Nothing is hacked.
     </div>
 </div>
 
 <script>
-    let time = 10;
-    const timer = document.getElementById("timer");
-    const prank = document.getElementById("prank");
+let time = 10;
+const timer = document.getElementById("timer");
+const prank = document.getElementById("prank");
 
-    const countdown = setInterval(() => {
-        time--;
-        timer.textContent = time;
+const countdown = setInterval(() => {
+    time--;
+    timer.textContent = time;
 
-        if (time <= 0) {
-            clearInterval(countdown);
-            timer.style.display = "none";
-            prank.style.display = "block";
-        }
-    }, 1000);
+    if (time <= 0) {
+        clearInterval(countdown);
+        timer.style.display = "none";
+        prank.style.display = "block";
+    }
+}, 1000);
 </script>
 
 </body>
