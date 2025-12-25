@@ -1,89 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nothing</title>
-    <style>
-        .content-block {
-            border: 1px solid #ccc;
-            padding: 15px;
-            margin-top: 20px;
-            position: relative;
-        }
-        .copy-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Security Alert</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Share Tech Mono', monospace;
+    }
+
+    body {
+        height: 100vh;
+        background: radial-gradient(circle at top, #1a0000, #000);
+        color: #ff3b3b;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .scanlines::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+            to bottom,
+            rgba(255,255,255,0.03),
+            rgba(255,255,255,0.03) 1px,
+            transparent 2px,
+            transparent 4px
+        );
+        pointer-events: none;
+    }
+
+    .container {
+        text-align: center;
+        padding: 40px 50px;
+        border: 2px solid #ff3b3b;
+        box-shadow: 0 0 25px rgba(255, 59, 59, 0.6);
+        animation: flicker 2s infinite;
+        max-width: 600px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+    }
+
+    .warning {
+        font-size: 1.1rem;
+        margin-bottom: 25px;
+        line-height: 1.6;
+    }
+
+    .countdown {
+        font-size: 2rem;
+        margin-top: 10px;
+        letter-spacing: 4px;
+    }
+
+    .prank {
+        display: none;
+        color: #00ff99;
+        font-size: 1.6rem;
+        margin-top: 20px;
+    }
+
+    @keyframes flicker {
+        0% { opacity: 1; }
+        45% { opacity: 0.95; }
+        50% { opacity: 0.8; }
+        55% { opacity: 0.95; }
+        100% { opacity: 1; }
+    }
+</style>
 </head>
-<body>
-    <h1>Select a Practical</h1>
-    <select id="practicalSelect">
-        <option value="">--Select a Practical--</option>
-        <option value="practical1">Practical 1</option>
-        <option value="practical2">Practical 2</option>
-        <option value="practical3">Practical 3</option>
-        <option value="practical4">Practical 4</option>
-        <option value="practical5">Practical 5</option>
-        <option value="practical6">Practical 6</option>
-        <option value="practical7">Practical 7</option>
-        <option value="practical8">Practical 8</option>
-        <option value="practical9">Practical 9</option>
-        <option value="practical10">Practical 10</option>
-        <option value="practical11">Practical 11</option>
-        <option value="practical12">Practical 12</option>
-        <option value="practical13">Practical 13</option>
-    </select>
+<body class="scanlines">
 
-    <div id="contentBlock" class="content-block" style="display: none;">
-        <button class="copy-button" onclick="copyContent()">Copy</button>
-        <div id="content"></div>
+<div class="container">
+    <h1>⚠ SECURITY BREACH ⚠</h1>
+    <p class="warning">
+        Your account activity has been compromised.<br>
+        Unauthorized access detected.<br>
+        Encrypting personal data...
+    </p>
+
+    <div class="countdown" id="timer">10</div>
+
+    <div class="prank" id="prank">
+        😂 GOT YOU 😂<br>
+        It’s just a prank.<br>
+        No hacking. No data. No stress.
     </div>
+</div>
 
-    <script>
-        const contentMap = {
-            'practical1': 'Content for Practical 1',
-            'practical2': 'Content for Practical 2',
-            'practical3': 'Content for Practical 3',
-            'practical4': 'Content for Practical 4',
-            'practical5': 'Content for Practical 5',
-            'practical6': 'Content for Practical 6',
-            'practical7': 'Content for Practical 7',
-            'practical8': 'Content for Practical 8',
-            'practical9': 'Content for Practical 9',
-            'practical10': 'Content for Practical 10',
-            'practical11': 'Content for Practical 11',
-            'practical12': 'Content for Practical 12',
-            'practical13': 'Content for Practical 13'
-        };
+<script>
+    let time = 10;
+    const timer = document.getElementById("timer");
+    const prank = document.getElementById("prank");
 
-        document.getElementById('practicalSelect').addEventListener('change', function() {
-            const selectedValue = this.value;
-            if (selectedValue) {
-                document.getElementById('content').innerText = contentMap[selectedValue];
-                document.getElementById('contentBlock').style.display = 'block';
-            } else {
-                document.getElementById('contentBlock').style.display = 'none';
-            }
-        });
+    const countdown = setInterval(() => {
+        time--;
+        timer.textContent = time;
 
-        function copyContent() {
-            const content = document.getElementById('content').innerText;
-            navigator.clipboard.writeText(content).then(() => {
-                const copyButton = document.querySelector('.copy-button');
-                copyButton.textContent = 'Copied';
-                setTimeout(() => {
-                    copyButton.textContent = 'Copy';
-                }, 2000); // Reset after 2 seconds
-            });
+        if (time <= 0) {
+            clearInterval(countdown);
+            timer.style.display = "none";
+            prank.style.display = "block";
         }
-    </script>
+    }, 1000);
+</script>
+
 </body>
 </html>
