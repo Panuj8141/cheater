@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anuj</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+        }
+        #name {
+            font-size: 72px;
+            font-weight: bold;
+        }
+        #name span {
+            opacity: 0;
+            animation: flash 1s forwards;
+        }
+        @keyframes flash {
+            0% {
+                opacity: 0;
+                text-shadow: none;
+            }
+            50% {
+                opacity: 1;
+                text-shadow: 0 0 20px white;
+            }
+            100% {
+                opacity: 1;
+                text-shadow: none;
+            }
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="name">PRACHI</div>
+    <button onclick="window.location.href = 'apple.html';">Continue</button>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const nameElement = document.getElementById('name');
+            const nameText = nameElement.innerText;
+            nameElement.innerHTML = '';
+
+            nameText.split('').forEach((letter, index) => {
+                const span = document.createElement('span');
+                span.innerText = letter;
+                span.style.animationDelay = `${index * 0.5}s`;
+                nameElement.appendChild(span);
+            });
+        });
+    </script>
+</body>
+</html>
